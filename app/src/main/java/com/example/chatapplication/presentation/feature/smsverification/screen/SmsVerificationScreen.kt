@@ -153,7 +153,7 @@ fun SmsVerificationScreen(
         }
     }
 
-    SideEffect {
+    LaunchedEffect(Unit) {
         scope.launch {
             viewModel.smsVerificationEffects.collectLatest {
                 when (it) {

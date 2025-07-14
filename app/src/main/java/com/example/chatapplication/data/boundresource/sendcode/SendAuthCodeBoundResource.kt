@@ -15,7 +15,7 @@ class SendAuthCodeBoundResource(private val port: ChatNetworkPort, private val p
     override fun processResponse(response: ApiWrapper<SendAuthCodeDto?>?, result: Boolean?): Boolean? {
         return when (response) {
             is ApiWrapper.Success -> response.data?.isSuccess
-            else -> false
+            else -> result
         }
     }
 

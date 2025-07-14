@@ -18,7 +18,7 @@ fun ChatApplicationTheme(
     val view = LocalView.current
 
     CompositionLocalProvider(
-        LocalSpacing provides LocalScreen.current,
+        LocalSpacing provides LocalScreenSpacing.current,
     ) {
         if (!view.isInEditMode) {
             SideEffect {

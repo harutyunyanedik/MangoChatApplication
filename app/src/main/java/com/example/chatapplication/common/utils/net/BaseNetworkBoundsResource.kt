@@ -6,7 +6,7 @@ import com.example.chatapplication.common.utils.net.model.FetchPolicy
 abstract class BaseNetworkBoundsResource<RequestType, ResultType> {
     abstract fun isError(response: RequestType?, result: ResultType?): ApiError?
 
-    abstract fun processResponse(response: RequestType?, result: ResultType?): ResultType?
+    abstract fun processResponse(response: RequestType?, result: ResultType? = null): ResultType?
 
     abstract fun processErrorResponse(response: RequestType?, result: ResultType?)
 
