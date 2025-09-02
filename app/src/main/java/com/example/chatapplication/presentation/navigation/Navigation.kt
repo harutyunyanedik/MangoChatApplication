@@ -4,7 +4,6 @@ package com.example.chatapplication.presentation.navigation
 //noinspection UsingMaterialAndMaterial3Libraries
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
-import androidx.compose.runtime.SideEffect
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.navigation.NavHostController
 import androidx.navigation.NavType
@@ -16,11 +15,10 @@ import com.example.chatapplication.data.di.tokenDataStoreQualifierName
 import com.example.chatapplication.data.storage.TokenDataStore
 import com.example.chatapplication.presentation.feature.chat.screen.ChatScreen
 import com.example.chatapplication.presentation.feature.editprofile.screen.EditProfileScreen
-import com.example.chatapplication.presentation.feature.phonenumber.screen.PhoneNumberScreen
-import com.example.chatapplication.presentation.feature.phonenumber.screen.TestScreen
 import com.example.chatapplication.presentation.feature.profile.screen.ProfileScreen
 import com.example.chatapplication.presentation.feature.registation.screen.RegistrationScreen
 import com.example.chatapplication.presentation.feature.smsverification.screen.SmsVerificationScreen
+import com.example.chatapplication.presentation.feature.test.TestScreen
 import com.example.chatapplication.presentation.navigation.routes.Screens
 import com.example.chatapplication.presentation.navigation.utils.navigateAndClearBackStack
 import com.example.chatapplication.presentation.shared.utils.activityViewModel
