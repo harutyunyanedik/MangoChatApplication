@@ -17,6 +17,7 @@ import com.example.chatapplication.data.storage.TokenDataStore
 import com.example.chatapplication.presentation.feature.chat.screen.ChatScreen
 import com.example.chatapplication.presentation.feature.editprofile.screen.EditProfileScreen
 import com.example.chatapplication.presentation.feature.phonenumber.screen.PhoneNumberScreen
+import com.example.chatapplication.presentation.feature.phonenumber.screen.TestScreen
 import com.example.chatapplication.presentation.feature.profile.screen.ProfileScreen
 import com.example.chatapplication.presentation.feature.registation.screen.RegistrationScreen
 import com.example.chatapplication.presentation.feature.smsverification.screen.SmsVerificationScreen
@@ -40,7 +41,7 @@ fun ChatNavigation() {
             LaunchScreen(navController)
         }
         composable(route = Screens.PhoneNumberScreen.route) {
-            PhoneNumberScreen(navController = navController)
+            TestScreen()
         }
         composable(route = Screens.SmsVerificationScreen.withArgsPath("phone", "code"), arguments = listOf(navArgument("phone") { type = NavType.StringType })) {
             SmsVerificationScreen(phone = it.arguments?.getString("phone"), countryCode = it.arguments?.getString("code"), navController = navController)
