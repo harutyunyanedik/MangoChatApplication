@@ -2,12 +2,13 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.jetbrains.kotlin.android)
     alias(libs.plugins.kotlin.serialization)
+    id("org.jetbrains.kotlin.plugin.compose") version "2.0.21"
     kotlin("kapt")
 }
 
 android {
     namespace = "com.example.interviewalphab"
-    compileSdk = 34
+    compileSdk = 35
 
     defaultConfig {
         applicationId = "com.example.interviewalphab"
@@ -20,12 +21,20 @@ android {
         vectorDrawables {
             useSupportLibrary = true
         }
+        buildFeatures {
+            viewBinding = true
+            //noinspection DataBindingWithoutKapt
+            dataBinding = true
+        }
     }
 
     buildTypes {
         release {
             isMinifyEnabled = false
-            proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
+            proguardFiles(
+                getDefaultProguardFile("proguard-android-optimize.txt"),
+                "proguard-rules.pro"
+            )
         }
     }
     compileOptions {
@@ -59,6 +68,7 @@ dependencies {
     implementation(libs.androidx.ui.tooling.preview)
     implementation(libs.androidx.material3)
     implementation(libs.play.services.cast.framework)
+    implementation(libs.androidx.material3.window.size.class1.android)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
@@ -78,7 +88,7 @@ dependencies {
     implementation(libs.androidx.lifecycle.viewmodel.compose)
     implementation(libs.androidx.navigation.compose)
 
-    implementation (libs.androidx.navigation.compose.v280)
+    implementation(libs.androidx.navigation.compose.v280)
     implementation(libs.androidx.material)
     implementation(libs.androidx.material.icons.extended)
 
@@ -99,15 +109,15 @@ dependencies {
 
     implementation(libs.androidx.lifecycle.runtime.ktx)
 
-    implementation (libs.retrofit)
+    implementation(libs.retrofit)
 
     implementation(libs.room.runtime)
     kapt(libs.room.compiler)
     implementation(libs.room.ktx)
 
-    implementation (libs.dagger)
-    kapt (libs.dagger.compiler)
+    implementation(libs.dagger)
+    kapt(libs.dagger.compiler)
 
-    implementation (libs.dagger.v2481)
-    kapt (libs.dagger.compiler.v2481)
+    implementation(libs.dagger.v2481)
+    kapt(libs.dagger.compiler.v2481)
 }

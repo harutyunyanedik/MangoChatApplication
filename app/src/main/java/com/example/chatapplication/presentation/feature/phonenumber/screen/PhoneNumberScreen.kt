@@ -22,7 +22,10 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.SideEffect
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -48,6 +51,8 @@ import com.example.chatapplication.common.utils.EMPTY_STRING
 import com.example.chatapplication.presentation.feature.phonenumber.PhoneNumberScreenViewModel
 import com.example.chatapplication.presentation.navigation.routes.Screens
 import com.example.chatapplication.presentation.shared.views.PhoneNumberView
+import com.example.chatapplication.presentation.theme.Theme
+import com.example.chatapplication.presentation.theme.spacing
 import com.example.interviewalphab.R
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
@@ -61,12 +66,24 @@ fun PhoneNumberScreen(viewModel: PhoneNumberScreenViewModel = koinViewModel(), n
     val state = viewModel.phoneNumberScreenState.collectAsStateWithLifecycle().value
     val scope = rememberCoroutineScope()
 
+    val items = remember {
+        mutableStateOf(listOf<String>())
+    }
+
+    LaunchedEffect(Unit) {
+        val list: MutableList<String> = mutableListOf()
+        for (i in 0..31) {
+            list.add(i.toString())
+        }
+        items.value = list
+    }
+
     Column(
         verticalArrangement = Arrangement.SpaceBetween,
         horizontalAlignment = Alignment.Start,
         modifier = Modifier
             .fillMaxSize()
-            .padding(16.dp)
+            .padding(Theme.spacing.medium)
             .background(MaterialTheme.colorScheme.background)
             .pointerInput(Unit) {
                 detectTapGestures(onTap = {
@@ -87,6 +104,8 @@ fun PhoneNumberScreen(viewModel: PhoneNumberScreenViewModel = koinViewModel(), n
                 ),
             )
             Spacer(modifier = Modifier.height(32.dp))
+//            GridViewAdvancedArrangement(items.value)
+
             PhoneNumberView(
                 selectedCountry = state.selectedCountry,
                 phoneNumber = state.phoneNumber ?: EMPTY_STRING,

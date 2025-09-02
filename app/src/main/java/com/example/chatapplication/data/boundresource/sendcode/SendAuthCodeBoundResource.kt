@@ -4,6 +4,7 @@ import com.example.chatapplication.data.ChatNetworkPort
 import com.example.chatapplication.data.model.sendcode.SendAuthCodeDto
 import com.example.chatapplication.common.utils.net.model.ApiWrapper
 import com.example.chatapplication.common.utils.net.HttpBoundsResource
+import com.example.chatapplication.common.utils.net.model.FetchPolicy
 
 class SendAuthCodeBoundResource(private val port: ChatNetworkPort, private val phone: String) : HttpBoundsResource<ApiWrapper<SendAuthCodeDto?>, Boolean>() {
 
@@ -14,7 +15,7 @@ class SendAuthCodeBoundResource(private val port: ChatNetworkPort, private val p
     override fun processResponse(response: ApiWrapper<SendAuthCodeDto?>?, result: Boolean?): Boolean? {
         return when (response) {
             is ApiWrapper.Success -> response.data?.isSuccess
-            else -> false
+            else -> result
         }
     }
 

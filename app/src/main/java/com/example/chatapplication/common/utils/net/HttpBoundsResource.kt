@@ -41,7 +41,7 @@ abstract class HttpBoundsResource<RequestType, ResultType> : BaseNetworkBoundsRe
                 val apiResponse = fetchFromNetwork()
                 val error = isError(apiResponse, null)
                 if (error == null) {
-                    val processedResponse = processResponse(apiResponse, null)
+                    val processedResponse = processResponse(apiResponse)
                     result = Recourse.Success(processedResponse)
                 } else {
                     processErrorResponse(apiResponse, null)
@@ -54,11 +54,11 @@ abstract class HttpBoundsResource<RequestType, ResultType> : BaseNetworkBoundsRe
                 val apiResponse = fetchFromNetwork()
                 val error = isError(apiResponse, null)
                 if (error == null) {
-                    val processedResponse = processResponse(apiResponse, null)
+                    val processedResponse = processResponse(apiResponse, storageValue)
                     saveNetworkResult(processedResponse)
                     result = Recourse.Success(processedResponse)
                 } else {
-                    processErrorResponse(apiResponse, null)
+                    processErrorResponse(apiResponse, storageValue)
                     result = Recourse.Error(error.message, storageValue)
                 }
             }

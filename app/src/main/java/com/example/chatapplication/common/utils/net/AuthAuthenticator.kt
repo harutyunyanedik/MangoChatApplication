@@ -29,7 +29,7 @@ class AuthAuthenticator(
             }
             val token = if (currentToken != updatedToken) updatedToken else {
                 val newSessionResponse = runBlocking {
-                    parseResponse {
+                    parseHttpResponse {
                         refreshTokenApiService.refreshToken(RefreshTokenRequest(tokenDataStore.getRefreshToken()))
                     }
                 }

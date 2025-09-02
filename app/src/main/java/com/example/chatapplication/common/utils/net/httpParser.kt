@@ -7,7 +7,7 @@ import kotlinx.serialization.serializer
 import retrofit2.Response
 import kotlin.reflect.KClass
 
-suspend inline fun <reified T> parseResponse(crossinline function: suspend () -> Response<T>): ApiWrapper<T> {
+suspend inline fun <reified T> parseHttpResponse(crossinline function: suspend () -> Response<T>): ApiWrapper<T> {
     return try {
         val apiResponse = function.invoke()
         val statusCode = apiResponse.code()
